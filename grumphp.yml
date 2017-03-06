@@ -1,0 +1,18 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    ascii:
+        failed: resources/commit-messages/error.txt
+        succeeded: resources/commit-messages/valid.txt
+    tasks:
+        phpcs:
+            standard: build/phpcs.xml
+        git_commit_message:
+            matchers:
+                - /^CTN-\d+/
+        composer:
+            file: ./composer.json
+        phpcsfixer:
+            config_file: build/.php_cs
+        securitychecker:
+            lockfile: ./composer.lock
